@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Các món cơm</title>
+
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #FFF7B9;
+            margin: 20px;
+        }
+        h1 {
+
+    color: #FF3300;
+    font-weight: bold;
+	 font-size: 41px;
+	  text-align: center;
+        }
+        #menu {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 4 cột cho bảng */
+            grid-gap: 20px;
+            list-style: none;
+            padding: 0;
+        }
+        #menu li {
+            border: 2px solid #FFD700;
+            padding: 15px;
+            text-align: center;
+            box-sizing: border-box;
+            background-color: #FFF8DC;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        #menu img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px;
+        }
+        #menu p {
+            font-size: 16px;
+            margin: 5px 0;
+            color: #333;
+        }
+        .price {
+            color: green;
+            font-weight: bold;
+        }
+        #cart {
+            background-color: #FFD700;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        #cart-button {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        #cart-button:hover {
+            background-color: darkgreen;
+        }
+        #cart-details {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            width: 400px;
+        }
+        #cart-details ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        #cart-details li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        #cart-details button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #cart-details button:hover {
+            background-color: darkred;
+        }
+        #close-cart {
+            background-color: gray;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        #close-cart:hover {
+            background-color: darkgray;
+        }
+
+        /* Style cho form thông tin khách hàng */
+        #customer-info {
+            margin-top: 20px;
+        }
+        #customer-info input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        #customer-info button {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        #customer-info button:hover {
+            background-color: darkgreen;
+        }
+         .menu {
+            background-color: #FFCC33
+
+
+
+;
+            overflow: hidden;
+        }
+
+/* Căn chỉnh lại các hình ảnh trong danh sách */
+ul#menu {
+    list-style-type: none; /* Xóa dấu chấm cho danh sách */
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Đảm bảo các mục trong danh sách sẽ xuống dòng khi không đủ chỗ */
+    justify-content: space-around; /* Căn đều các mục trong danh sách */
+}
+
+ul#menu li {
+    width: 30%; /* Đặt kích thước mỗi mục trong danh sách chiếm 1/3 chiều rộng của danh sách */
+    text-align: center; /* Căn giữa nội dung */
+    margin-bottom: 20px; /* Khoảng cách giữa các mục */
+}
+
+ul#menu li img {
+    width: 100%; /* Đặt ảnh chiếm hết chiều rộng của mục */
+    max-height: 200px; /* Đặt chiều cao tối đa cho ảnh */
+    object-fit: cover; /* Cắt ảnh sao cho phù hợp mà không bị méo */
+}
+
+ul#menu li p {
+    margin: 5px 0; /* Khoảng cách giữa các đoạn văn bản */
+}
+
+
+
+
+
+/* Thanh menu */
+.menu {
+    background-color: #FFCC33;
+    display: flex;
+    justify-content: center; /* Căn giữa các phần tử trong menu */
+    align-items: center;
+    gap: 30px; /* Khoảng cách đều giữa các phần tử */
+    padding: 10px 0; /* Thêm padding cho thanh menu */
+}
+
+/* Các liên kết trong menu */
+.menu a {
+    color: #CC0000;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: background-color 0.3s ease; /* Hiệu ứng mượt khi hover */
+}
+
+        .menu a:hover {
+            background-color: #ddd;
+        }
+		a {
+    color: #ff6f61;
+    text-decoration: none;
+		 font-size: 26px;
+
+}
+    </style>
+</head>
+<body>
+<h1>Phúc Bảo Khang - Hương vị quê nhà, ấm áp yêu thương</h1>
+
+       <header>
+        <div class="menu">
+            <img src="https://scontent.fsgn5-8.fna.fbcdn.net/v/t1.15752-9/475731479_1149565833226837_5927121936745070516_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeGzZ3k6VH1C8tFxrYvCZeNdoNA5ojIIUw6g0DmiMghTDmzUy5-AWLIua-FpCC5TDXs1JSno9Eo68KZzK3J5pIWS&_nc_ohc=SZOvyWytQ_AQ7kNvgGYZHzs&_nc_oc=AdjUeXOMqjHLM7VO2tcHM2fKHmAtTssyfp2A1ATY0ZwbRySW8i0Ldu_mB_0ba0I5OOs&_nc_zt=23&_nc_ht=scontent.fsgn5-8.fna&oh=03_Q7cD1gFGf3f1asYNpEOwuInfIi6Yg49Se6c8iBuZFRPZiV6Dzg&oe=67CB7968" alt="Phúc Bảo Khang" width="100" height="100">
+            <a href="trang-chu.html">TRANG CHỦ</a>
+            <a href="MENU.html">MÓN CHÍNH</a>
+            <a href="mon-an-kem.html">MÓN ĂN KÈM</a>
+        </div>
+    </header>
+<h1>CÁC MÓN CƠM</h1>
+<ul id="menu">
+    <li onclick="addToCart('Cơm sườn cốt lết', 35000)">
+        <p>CƠM SƯỜN CỐT LẾT</p>
+        <p class="price">35.000 VNĐ</p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj6iA0ZLSFNNi2JUZtfNDY17QXIYs2qn-tJQ&s" alt="Cơm sườn cốt lết">
+    </li>
+    <li onclick="addToCart('Cơm sườn cay', 40000)">
+        <p>CƠM SƯỜN CAY</p>
+        <p class="price">40.000 VNĐ</p>
+        <img src="https://combaoyen.com/upload/product/suon-cay-nuong-1741.jpeg" alt="Cơm sườn cay">
+    </li>
+    <li onclick="addToCart('Cơm sườn bì cốt lết', 40000)">
+        <p>CƠM SƯỜN BÌ CỐT LẾT</p>
+        <p class="price">40.000 VNĐ</p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM2Te_v9KMdMG8MMZbbVmuyjL_mGo5nSfs7Q&s" alt="Cơm sườn bì cốt lết">
+    </li>
+    <li onclick="addToCart('Cơm sườn bì cay', 45000)">
+        <p>CƠM SƯỜN BÌ CAY</p>
+        <p class="price">45.000 VNĐ</p>
+        <img src="https://th.bing.com/th/id/OIP.J3ZOiZjvhM_oJNFhAxOI_QHaHa?rs=1&pid=ImgDetMain" alt="Cơm sườn bì cay">
+    </li>
+    <li onclick="addToCart('Cơm sườn chả cốt lết', 40000)">
+        <p>CƠM SƯỜN CHẢ CỐT LẾT</p>
+        <p class="price">40.000 VNĐ</p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPuKL415ScHqI84YT3EZE_9dPovPSGxdzW4A&s" alt="Cơm sườn chả cốt lết">
+    </li>
+    <li onclick="addToCart('Cơm sườn chả cay', 45000)">
+        <p>CƠM SƯỜN CHẢ CAY</p>
+        <p class="price">45.000 VNĐ</p>
+        <img src="https://cdn.tgdd.vn/2020/08/CookProductThumb/Untitled-1-620x620-88.jpg" alt="Cơm sườn chả cay">
+    </li>
+    <li onclick="addToCart('Cơm sườn bì chả cốt lết', 45000)">
+        <p>CƠM SƯỜN BÌ CHẢ CỐT LẾT</p>
+        <p class="price">45.000 VNĐ</p>
+        <img src="https://dulichphuongnam.vn/datafiles/35/2023-08/31848625-com-tam-suon-bi-ba-chi.png" alt="Cơm sườn bì chả cốt lết">
+    </li>
+    <li onclick="addToCart('Cơm sườn bì chả', 45000)">
+        <p>CƠM SƯỜN BÌ CHẢ</p>
+        <p class="price">45.000 VNĐ</p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUo_2y_7Wun0ycEAWev4DqEzM9wj1lt349uQ&s" alt="Cơm sườn bì chả">
+    </li>
+</ul>
+
+<div id="cart">
+    <p>Giỏ hàng: <span id="cart-items">0</span> món</p>
+    <p>Tổng: <span id="total-price">0 VNĐ</span></p>
+    <button id="cart-button" onclick="toggleCartDetails()">Xem Giỏ Hàng</button>
+</div>
+
+<!-- Chi tiết giỏ hàng -->
+<div id="cart-details">
+    <h3>Chi Tiết Giỏ Hàng</h3>
+    <ul id="cart-list"></ul>
+    <p><strong>Tổng cộng: <span id="cart-total"></span></strong></p>
+
+    <!-- Form nhập thông tin khách hàng -->
+    <div id="customer-info">
+        <h4>Thông tin khách hàng</h4>
+        <input type="text" id="customer-name" placeholder="Họ và tên" required>
+        <input type="text" id="customer-phone" placeholder="Số điện thoại" required>
+        <input type="text" id="customer-address" placeholder="Địa chỉ" required>
+        <button onclick="submitOrder()">Thanh toán</button>
+    </div>
+    
+    <button id="close-cart" onclick="closeCart()">Đóng</button>
+</div>
+
+<script>
+    let cart = [];
+
+    function addToCart(name, price) {
+        cart.push({ name, price });
+        updateCart();
+    }
+
+    function updateCart() {
+        const cartItems = document.getElementById('cart-items');
+        cartItems.textContent = cart.length;
+
+        const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+        const totalPriceElement = document.getElementById('total-price');
+        totalPriceElement.textContent = totalPrice.toLocaleString() + ' VNĐ';
+    }
+
+    function toggleCartDetails() {
+        const cartDetails = document.getElementById('cart-details');
+        const cartList = document.getElementById('cart-list');
+        const cartTotal = document.getElementById('cart-total');
+
+        cartList.innerHTML = '';
+        cart.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = `${item.name} - ${item.price.toLocaleString()} VNĐ`;
+            cartList.appendChild(li);
+        });
+
+        const totalAmount = cart.reduce((total, item) => total + item.price, 0);
+        cartTotal.textContent = totalAmount.toLocaleString() + ' VNĐ';
+
+        cartDetails.style.display = 'block';
+    }
+
+    function closeCart() {
+        const cartDetails = document.getElementById('cart-details');
+        cartDetails.style.display = 'none';
+    }
+
+    function submitOrder() {
+        const name = document.getElementById('customer-name').value;
+        const phone = document.getElementById('customer-phone').value;
+        const address = document.getElementById('customer-address').value;
+
+        if (name && phone && address) {
+            alert(`Hóa đơn:\n\nTên: ${name}\nSố điện thoại: ${phone}\nĐịa chỉ: ${address}\nTổng cộng: ${document.getElementById('cart-total').textContent}`);
+            cart = [];
+            updateCart();
+            closeCart();
+        } else {
+            alert('Vui lòng nhập đầy đủ thông tin khách hàng!');
+        }
+    }
+</script>
+
+</body>
+</html>
